@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.medcord.test.model.ApiResponse
-import com.medcord.test.model.ListRepository
+import com.medcord.test.model.AppRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ class HomeViewModel : ViewModel() {
     fun getData(jsonObj:HashMap<String,String>) {
         try {
 
-            ListRepository.getInstance().getList(jsonObj) { isSuccess:Boolean, response:ApiResponse? ->
+            AppRepository.getInstance().getList(jsonObj) { isSuccess:Boolean, response:ApiResponse? ->
                 if (isSuccess) {
                     CoroutineScope(Dispatchers.IO).launch {
                         realdata.postValue(response)

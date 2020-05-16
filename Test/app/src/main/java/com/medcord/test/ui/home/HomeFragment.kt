@@ -10,9 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.observe
 import com.medcord.test.R
-import com.medcord.test.model.ListRepository
 import com.medcord.test.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() ,View.OnClickListener {

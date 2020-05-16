@@ -6,21 +6,18 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
 
-class ListRepository {
+class AppRepository {
 
     fun getList(jsonObj:Map<String,String>, onResult: (isSuccess: Boolean, response: ApiResponse?) -> Unit) {
 
         try {
-
             ApiClient.instance.getList(jsonObj).enqueue(object : Callback<ApiResponse> {
-
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response != null && response.isSuccessful)
                         onResult(true, response.body())
                     else
                         onResult(false, null)
                 }
-
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                     onResult(false, null)
                 }
@@ -33,9 +30,9 @@ class ListRepository {
     }
 
     companion object {
-        private var INSTANCE: ListRepository? = null
+        private var INSTANCE: AppRepository? = null
         fun getInstance() = INSTANCE
-            ?: ListRepository().also {
+            ?: AppRepository().also {
                 INSTANCE = it
             }
     }
